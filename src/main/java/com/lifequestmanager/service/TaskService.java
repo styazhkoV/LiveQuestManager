@@ -1,14 +1,15 @@
 package com.lifequestmanager.service;
-
-import com.lifequestmanager.model.Task;
-import com.lifequestmanager.model.User;
-import com.lifequestmanager.repository.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lifequestmanager.model.Recurrence;
+import com.lifequestmanager.model.Task;
+import com.lifequestmanager.model.User;
+import com.lifequestmanager.repository.TaskRepository;
 @Service
 public class TaskService {
 
