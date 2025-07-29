@@ -1,11 +1,13 @@
 package com.lifequestmanager.util;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
+import io.jsonwebtoken.Jwts;
+import static io.jsonwebtoken.Jwts.parser;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JwtUtil {
@@ -26,7 +28,7 @@ public class JwtUtil {
     }
 
     public String extractUsername(String token) {
-        return Jwts.parser()
+        return parser()
             .setSigningKey(secret)
             .parseClaimsJws(token)
             .getBody()
@@ -35,7 +37,7 @@ public class JwtUtil {
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+            parser().setSigningKey(secret).parseClaimsJws(token);
             return true;
         } catch (Exception e) {
             return false;
